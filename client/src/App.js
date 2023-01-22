@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
+          <Route index element={<DailyTodo/>}/>
           <Route path="/" element={<Layout/>}> 
           <Route path="dailytodo" element={<DailyTodo/>}/>
           <Route path="questions" element={<Questions/>}/>
@@ -17,7 +18,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </div>
-  );
+  ); 
 }
 
 export default App;
