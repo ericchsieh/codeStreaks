@@ -23,7 +23,7 @@ const Signup = () => {
         e.preventDefault()
         try {
             await axios.post("http://localhost:8800/Users", users)
-            navigate("login")
+            navigate("/")
         } catch(err) {
             console.log(err)
         }

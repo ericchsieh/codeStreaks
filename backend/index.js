@@ -24,7 +24,7 @@ app.get("/questions", (req, res) => {
 })
 
 app.post("/users", (req, res) => {
-    const q = "INSERT INTO users ('email', 'pwd', 'nickname', 'status', 'preference', 'company') VALUES (?)"
+    const q = "INSERT INTO users (email, pwd, nickname, status, preference, company) VALUES (?)"
     const values = [
         req.body.email,
         req.body.pwd,
