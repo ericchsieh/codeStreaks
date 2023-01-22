@@ -1,6 +1,6 @@
 import express from "express"
 import mysql from "mysql"
-
+import cors from "cors"
 
 const app = express()
 const db = mysql.createConnection({
@@ -10,6 +10,9 @@ const db = mysql.createConnection({
     database:"codestreaks"
 })
 
+app.use(express.json())
+app.use(cors())
+
 app.get("/", (req, res) => res.json("hello this is backend"))
 
 app.get("/questions", (req, res) => {
@@ -17,6 +20,22 @@ app.get("/questions", (req, res) => {
     db.query(q, (err, data) => {
         if(err) return res.json(err)
         return res.json(data)
+    })
+})
+
+app.post("/users", (req, res) => {
+    const q = "INSERT INTO users ('email', 'pwd', 'nickname', 'status', 'preference', 'company') VALUES (?)"
+    const values = [
+        req.body.email,
+        req.body.pwd,
+        req.body.nickname,
+        req.body.status,
+        req.body.preference,
+        req.body.company]
+
+    db.query(q, [values], (err, data) => {
+        if(err) return res.json(err)
+        return res.json("User has been created successfully.")
     })
 })
 
