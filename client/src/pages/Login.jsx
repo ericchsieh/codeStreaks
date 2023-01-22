@@ -18,7 +18,7 @@ const Login = () => {
     const handleClick = async e => {
         e.preventDefault()
         try {
-            await axios.post("http://localhost:8800/Users", users)
+            await axios.post("http://localhost:8800/Users" + email, users)
             navigate("/")
         } catch(err) {
             console.log(err)
@@ -32,6 +32,7 @@ const Login = () => {
             <input type="text" placeholder='Email' onChange={handleChange} name="email"/>
             <input type="password" placeholder='Password' onChange={handleChange} name="pwd"/>
             <button onClick={handleClick}>Login</button>
+            <a href="./signup"><button>Sign Up</button></a>
         </div>
     )
 }
